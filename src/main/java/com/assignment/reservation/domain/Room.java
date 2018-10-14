@@ -12,10 +12,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * @author 정재호
  * domain layer에 해당하는 entity class입니다.
- * Room에 필요한 name과 Reservation의 list에 대한 정보를 가지고 있습니다.
+ * Room에 필요한 name과 Reservation의 list에 대한 정보를 지닙니다.
  * Room class와 Reservation class는 1:N 관계입니다.
+ *
+ * @author 정재호
  * @see Reservation
  */
 @Entity
@@ -42,10 +43,13 @@ public class Room {
     }
 
     /**
-     * @param reservationAppended 기존의 reservations에 추가되는 Reservation's list
-     * @return 변경된 Room instance를 return
-     * @throws ReservationAlrealyExistException 만약 기존의 reservation과 Overlap되면 throw
+     * 만약 reservationAppended가 기존의 reservations와 중복되지 않는다면,
+     * 기존의 reservation에 reservationAppended를 추가하는 method입니다
+     *
      * @author 정재호
+     * @param reservationAppended 기존의 reservations에 추가되는 Reservation's list입니다.
+     * @return 변경된 Room instance를 return합니다.
+     * @throws ReservationAlrealyExistException 만약 기존의 reservation과 중복되면 throw합니다.
      */
     public Room appendReservations(List<Reservation> reservationAppended) {
         for (Reservation reservation : reservationAppended) {

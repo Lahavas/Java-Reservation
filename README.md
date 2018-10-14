@@ -6,7 +6,7 @@ Problem Solve
 
 - 회의실 추가
     - Input Data Form
-        ``` json
+        ```
         {
             owner: String,
             period: {

@@ -19,7 +19,6 @@ public class ReservationTest {
 
     private Reservation reservationWithOwner;
     private Reservation reservationWithStartAndEnd;
-    private Reservation defaultReservation;
 
     @Before
     public void initVariables() throws Exception {
@@ -40,13 +39,6 @@ public class ReservationTest {
 
         reservationWithOwner = Reservation.builder().owner(owner).build();
         reservationWithStartAndEnd = Reservation.builder().start(start).end(end).build();
-        defaultReservation = Reservation.builder().build();
-    }
-
-    @Test
-    public void whenCompareToSameReservation_thenEqualsToSame() {
-        // then
-        assertEquals(defaultReservation, defaultReservation);
     }
 
     @Test

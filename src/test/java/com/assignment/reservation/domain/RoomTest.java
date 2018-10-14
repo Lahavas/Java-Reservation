@@ -17,7 +17,6 @@ public class RoomTest {
 
     private String roomName;
 
-    private Room defaultRoom;
     private Room roomWithName;
 
     private LocalDate date;
@@ -31,7 +30,6 @@ public class RoomTest {
     public void initVariables() throws Exception {
         roomName = "Real Room";
 
-        defaultRoom = Room.builder().build();
         roomWithName = Room.builder().name(roomName).build();
 
         date = LocalDate.now();
@@ -40,21 +38,6 @@ public class RoomTest {
 
         existedReservationList = FixtureFactory.generateReservationList(someReservationsCount, date, midnight);
         roomWithReservationList = Room.builder().reservations(existedReservationList).build();
-    }
-
-    @Test
-    public void whenCompareToSameRoom_thenEqualsToSame() {
-        // then
-        assertEquals(defaultRoom, defaultRoom);
-    }
-
-    @Test
-    public void whenCompareToOtherRoom_thenNotEqualsToOther() {
-        // given
-        Room otherRoom = Room.builder().build();
-
-        // then
-        assertNotEquals(otherRoom, defaultRoom);
     }
 
     @Test

@@ -4,6 +4,7 @@ import com.assignment.reservation.util.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.*;
@@ -108,5 +109,32 @@ public class ReservationTest {
 
         // then
         assertFalse(reservationWithStartAndEnd.isOverlapped(afterEnd));
+    }
+
+    @Test
+    public void givenSameDateToStart_whenIsSameDate_thenReturnTrue() {
+        // given
+        LocalDate sameToStart = start.toLocalDate();
+
+        // then
+        assertTrue(reservationWithStartAndEnd.isSameDate(sameToStart));
+    }
+
+    @Test
+    public void givenSameDateToEnd_whenIsSameDate_thenReturnTrue() {
+        // given
+        LocalDate sameToEnd = end.toLocalDate();
+
+        // then
+        assertTrue(reservationWithStartAndEnd.isSameDate(sameToEnd));
+    }
+
+    @Test
+    public void givenOtherDate_whenIsSameDate_thenReturnFalse() {
+        // given
+        LocalDate otherDate = start.toLocalDate().minusDays(1);
+
+        // then
+        assertFalse(reservationWithStartAndEnd.isSameDate(otherDate));
     }
 }

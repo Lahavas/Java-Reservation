@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -35,11 +36,15 @@ public class Reservation implements Period {
     @Column(name = "end", nullable = false)
     private LocalDateTime end;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Room room;
+
     @Builder
-    public Reservation(String owner, LocalDateTime start, LocalDateTime end) {
+    public Reservation(String owner, LocalDateTime start, LocalDateTime end, Room room) {
         this.owner = owner;
         this.start = start;
         this.end = end;
+        this.room = room;
     }
 
     @Override
@@ -62,5 +67,16 @@ public class Reservation implements Period {
     public boolean isOverlapped(LocalDateTime time) {
         return (time.isAfter(start) && time.isBefore(end))
                 || time.isEqual(start) && start.plusMinutes(DateUtils.MINUTES_DIVIDER).isEqual(end);
+    }
+
+    /**
+     * date 인자와 start & end field의 LocalDate instance가 같은지 확인하는 method입니다.
+     *
+     * @author 정재호
+     * @param date start & end field와 비교하기 위한 parameter입니다.
+     * @return date 인자와 start & end field의 LocalDate instance가 같으면 true를 return합니다.
+     */
+    public boolean isSameDate(LocalDate date) {
+        return start.toLocalDate().isEqual(date) || end.toLocalDate().isEqual(date);
     }
 }

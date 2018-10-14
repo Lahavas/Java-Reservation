@@ -6,6 +6,7 @@ import com.assignment.reservation.dto.ReservationDTO;
 import com.assignment.reservation.exception.RoomEntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class RoomService {
      * @param dto Reservation 정보를 담고 있습니다.
      * @return 예약이 완료된 Room을 return합니다.
      */
+    @Transactional
     public Room reserve(ReservationDTO dto) {
         return roomRepository.save(
                 findRoomByName(dto.getRoom().getName())
@@ -43,6 +45,7 @@ public class RoomService {
      * @author 정재호
      * @return Database에 저장된 모든 Room 정보를 return합니다.
      */
+    @Transactional(readOnly = true)
     public List<Room> findAll() {
         return roomRepository.findAll();
     }

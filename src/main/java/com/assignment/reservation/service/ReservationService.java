@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,7 @@ public class ReservationService {
     public List<Reservation> findReservationsByDate(LocalDate date) {
         return reservationRepository.findAll().stream()
                 .filter(reservation -> reservation.isSameDate(date))
+                .sorted(Comparator.comparing(reservation -> reservation.getRoom().getName()))
                 .collect(Collectors.toList());
     }
 }

@@ -21,6 +21,7 @@ public class FixtureFactory {
         for (int i = 0; i < count; i++) {
             reservationList.add(Reservation.builder()
                     .owner(String.format("Owner %d", i))
+                    .room(Room.builder().name(String.format("Room %d", i)).build())
                     .start(LocalDateTime.of(date, time.plusMinutes(i * DateUtils.MINUTES_DIVIDER)))
                     .end(LocalDateTime.of(date, time.plusMinutes((i + 1) * DateUtils.MINUTES_DIVIDER)))
                     .build());

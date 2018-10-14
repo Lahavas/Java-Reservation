@@ -25,7 +25,24 @@
         </header>
         <main role="main">
             <div class="container">
-
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">회의실</th>
+                        <th scope="col">예약자</th>
+                        <th scope="col">예약 시작 시간</th>
+                        <th scope="col">예약 끝 시간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-th-each="reservation : ${reservations}">
+                        <th scope="row" data-th-text="${reservation.room.name}"></th>
+                        <td data-th-text="${reservation.owner}"></td>
+                        <td data-th-text="${reservation.start}"></td>
+                        <td data-th-text="${reservation.end}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </main>
     </body>

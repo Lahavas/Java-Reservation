@@ -3,6 +3,7 @@ package com.assignment.reservation.dto;
 import com.assignment.reservation.domain.Reservation;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
 import javax.validation.constraints.FutureOrPresent;
@@ -21,6 +22,7 @@ import static java.time.temporal.TemporalAdjusters.next;
  * @see Reservation
  */
 @Getter
+@NoArgsConstructor
 public class ReservationDTO {
 
     @NotEmpty

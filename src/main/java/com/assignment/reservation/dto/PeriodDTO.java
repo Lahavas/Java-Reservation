@@ -4,6 +4,7 @@ import com.assignment.reservation.util.Period;
 import com.assignment.reservation.util.validate.CorrectReservationMinute;
 import com.assignment.reservation.util.validate.ValidPeriodOrder;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.FutureOrPresent;
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
  * @see Period
  */
 @ValidPeriodOrder(start = "start", end = "end")
+@NoArgsConstructor
 public class PeriodDTO implements Period {
 
     @FutureOrPresent

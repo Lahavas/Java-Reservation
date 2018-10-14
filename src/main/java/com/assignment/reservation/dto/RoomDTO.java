@@ -3,6 +3,7 @@ package com.assignment.reservation.dto;
 import com.assignment.reservation.domain.Room;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotEmpty;
  * @see Room
  */
 @Getter
+@NoArgsConstructor
 public class RoomDTO {
 
     @NotEmpty

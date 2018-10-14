@@ -3,12 +3,14 @@ package com.assignment.reservation.service;
 import com.assignment.reservation.domain.Room;
 import com.assignment.reservation.domain.RoomRepository;
 import com.assignment.reservation.exception.RoomEntityNotFoundException;
+import com.assignment.reservation.util.FixtureFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -43,5 +45,17 @@ public class RoomServiceTest {
 
         // then
         roomService.findRoomByName(anyString());
+    }
+
+    @Test
+    public void givenRoomList_whenFindAll_thenReturnRooms() {
+        // given
+        List<Room> roomList = FixtureFactory.generateRoomList(3);
+
+        // when
+        when(roomRepository.findAll()).thenReturn(roomList);
+
+        // then
+        assertEquals(roomList, roomService.findAll());
     }
 }

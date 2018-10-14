@@ -7,6 +7,8 @@ import com.assignment.reservation.exception.RoomEntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Room에 관한 business logic을 담당하는 service layer입니다
  *
@@ -33,6 +35,16 @@ public class RoomService {
         return roomRepository.save(
                 findRoomByName(dto.getRoom().getName())
                         .appendReservations(dto.toEntityList()));
+    }
+
+    /**
+     * Database에 저장된 모든 Room 정보를 가져오는 method입니다.
+     *
+     * @author 정재호
+     * @return Database에 저장된 모든 Room 정보를 return합니다.
+     */
+    public List<Room> findAll() {
+        return roomRepository.findAll();
     }
 
     Room findRoomByName(String name) {

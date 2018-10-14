@@ -1,6 +1,7 @@
 package com.assignment.reservation.util;
 
 import com.assignment.reservation.domain.Reservation;
+import com.assignment.reservation.domain.Room;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -26,5 +27,17 @@ public class FixtureFactory {
         }
 
         return reservationList;
+    }
+
+    public static List<Room> generateRoomList(int count) {
+        List<Room> roomList = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            roomList.add(Room.builder()
+                    .name(String.format("Room %d", i))
+                    .build());
+        }
+
+        return roomList;
     }
 }
